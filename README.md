@@ -35,3 +35,7 @@ Aplicación de consola que actúa como interfaz de usuario.
 1. Iniciar el Servidor:
 ```bash
 python main.py
+
+2. En una nueva terminal, iniciar el Cliente:
+```bash
+python cliente.py
