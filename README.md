@@ -7,36 +7,52 @@ El sistema permite realizar operaciones CRUD (Crear, Leer, Actualizar, Borrar) a
 ## Arquitectura del Sistema
 
 ### Servidor (`main.py`)
-Implementa la lógica de negocio y expone los endpoints de la API.
-* Protocolo: HTTP sobre TCP/IP.
-* Formato de Intercambio: JSON.
-* Persistencia: Gestión de datos en memoria/archivo local.
-* Endpoints Principales:
-    * GET /peliculas: Listado completo o filtrado por género/título.
-    * GET /peliculas/{id}: Detalle de una película específica.
-    * POST /peliculas: Alta de nueva película.
-    * PUT /peliculas/{id}: Modificación de datos existentes.
-    * DELETE /peliculas/{id}: Baja lógica o física del registro.
+Implementa la lógica de negocio y expone los endpoints de la API utilizando FastAPI.
+* **Protocolo:** HTTP sobre TCP/IP.
+* **Formato de Intercambio:** JSON.
+* **Persistencia:** Gestión de datos en memoria (lista de diccionarios).
+* **Endpoints Principales:**
+    * `GET /peliculas`: Listado completo o filtrado por género/título.
+    * `GET /peliculas/{id}`: Detalle de una película específica.
+    * `POST /peliculas`: Alta de nueva película.
+    * `PUT /peliculas/{id}`: Modificación de datos existentes.
+    * `DELETE /peliculas/{id}`: Baja del registro.
 
 ### Cliente (`cliente.py`)
 Aplicación de consola que actúa como interfaz de usuario.
 * Menú interactivo para seleccionar operaciones.
 * Generación de requests HTTP mediante la librería `requests`.
 * Formateo y visualización de las respuestas JSON recibidas del servidor.
+* Manejo de códigos de estado HTTP (200 OK, 201 Created, 404 Not Found) para feedback al usuario.
 
 ## Tecnologías Utilizadas
-* Python 3
-* FastAPI / Uvicorn (Servidor)
-* Requests (Cliente)
-* JSON (Serialización de datos)
+* Python 3.9+
+* FastAPI (Framework de API)
+* Uvicorn (Servidor ASGI)
+* Requests (Cliente HTTP)
+* Pydantic (Validación de datos)
 
 ## Instrucciones de Ejecución
 
-1. Iniciar el Servidor:
-```bash
-python main.py
-```
-2. En una nueva terminal, iniciar el Cliente:
-```bash
-python cliente.py
-```
+### 1. Instalación de dependencias
+Se requiere instalar las librerías del servidor y del cliente:
+
+    pip install fastapi uvicorn requests
+
+### 2. Iniciar el Servidor
+Ejecutar el siguiente comando para levantar la API en el puerto 8000 (localhost):
+
+    python main.py
+
+*Nota: El servidor debe mantenerse en ejecución para que el cliente pueda conectarse.*
+
+### 3. Iniciar el Cliente
+En una nueva terminal, ejecutar la interfaz de consola:
+
+    python cliente.py
+
+## Documentación
+Para detalles sobre el diseño del protocolo, el diagrama de flujo y los códigos de estado HTTP utilizados, consultar el archivo `Accurso-Mancini - Informe.pdf` incluido en este repositorio.
+
+---
+*Proyecto desarrollado para la asignatura Redes de Datos - Tecnicatura Universitaria en IA (UNR), en colaboración con Mancini.*
